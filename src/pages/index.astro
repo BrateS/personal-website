@@ -1,7 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -9,42 +7,473 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+		<script>
+			window.addEventListener('DOMContentLoaded', () => {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('show');
+						}
+					});
+				});
+
+				document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+			});
+		</script>
 	</head>
 	<body>
-		<Header />
+		<div class="gradient-bg"></div>
+		<nav>
+			<a href="#home" class="nav-brand">
+				<span class="typing">SB</span>
+			</a>
+			<button class="nav-menu-button" aria-label="Toggle menu">
+				<i class="fas fa-bars"></i>
+			</button>
+			<div class="nav-container">
+				<ul class="nav-links">
+					<li><a href="#about">About</a></li>
+					<li><a href="#experience">Experience</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#education">Education</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+				<div class="nav-social">
+					<a href="https://linkedin.com/in/stefan-bratescu-95a379126/" target="_blank" aria-label="LinkedIn">
+						<i class="fab fa-linkedin"></i>
+					</a>
+					<a href="https://github.com/BrateS" target="_blank" aria-label="GitHub">
+						<i class="fab fa-github"></i>
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<script>
+			const menuButton = document.querySelector('.nav-menu-button');
+			const navContainer = document.querySelector('.nav-container');
+			const navLinks = document.querySelectorAll('.nav-links a');
+
+			menuButton.addEventListener('click', () => {
+				navContainer.classList.toggle('open');
+				menuButton.querySelector('i').classList.toggle('fa-bars');
+				menuButton.querySelector('i').classList.toggle('fa-times');
+			});
+
+			navLinks.forEach(link => {
+				link.addEventListener('click', () => {
+					navContainer.classList.remove('open');
+					menuButton.querySelector('i').classList.add('fa-bars');
+					menuButton.querySelector('i').classList.remove('fa-times');
+				});
+			});
+		</script>
+
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section id="home" class="hero">
+				<div class="hero-content">
+					<div class="hero-image">
+						<div class="image-container">
+							<img src="/images/profile.jpg" alt="Stefan Bratescu" />
+						</div>
+					</div>
+					<div class="terminal-window animate-on-scroll desktop-only">
+						<div class="terminal-header">
+							<span class="dot"></span>
+							<span class="dot"></span>
+							<span class="dot"></span>
+						</div>
+						<div class="terminal-content">
+							<div class="line">
+								<span class="prompt">$</span>
+								<span class="command typing">whoami</span>
+							</div>
+							<div class="line">
+								<span class="output typing-delay">Bratescu Stefan-Gabriel</span>
+							</div>
+							<div class="line">
+								<span class="prompt">$</span>
+								<span class="command typing">roles</span>
+							</div>
+							<div class="line">
+								<span class="output typing-delay">[</span>
+							</div>
+							<div class="line">
+								<span class="output typing-delay">  "Engineering Leader",</span>
+							</div>
+							<div class="line">
+								<span class="output typing-delay">  "Software Architect"</span>
+							</div>
+							<div class="line">
+								<span class="output typing-delay">  "ex Teaching Assistant"</span>
+							</div>
+							<div class="line">
+								<span class="output typing-delay">]</span>
+							</div>
+						</div>
+					</div>
+					<div class="mobile-intro animate-on-scroll mobile-only">
+						<div class="mobile-intro-line">
+							<span class="label">Name:</span>
+							<span class="value">Bratescu Stefan-Gabriel</span>
+						</div>
+						<div class="mobile-intro-line">
+							<span class="label">Roles:</span>
+							<span class="value">Engineering Leader</span>
+							<span class="value">Software Architect</span>
+							<span class="value">ex Teaching Assistant</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="about">
+				<h2>About Me</h2>
+				<div class="about-content">
+					<div class="about-text">
+						{SITE_DESCRIPTION}
+					</div>
+				</div>
+			</section>
+
+			<section id="experience">
+				<h2>Experience</h2>
+				<div class="timeline">
+					<div class="experience-item">
+						<h3>Engineering Lead</h3>
+						<p class="period">June 2021 - Present</p>
+						<p class="company">Pentest-Tools.com</p>
+						<ul>
+							<li>Leading a team of 8 engineers in developing website scanners</li>
+							<li>Created the engineering ladder for the company</li>
+							<li>Grew team from 3 to 8 members, developing technical, security, product, and QA roles</li>
+							<li>Managing 1-on-1s, salaries, technical discussions, planning, and conflict resolution</li>
+						</ul>
+					</div>
+
+					<div class="experience-item">
+						<h3>Software Engineer</h3>
+						<p class="period">August 2019 - June 2021</p>
+						<p class="company">Pentest-Tools.com</p>
+						<ul>
+							<li>Developed core scanner functionality and vulnerability detection systems</li>
+							<li>Implemented XSS, SQLI, and OSCMDI detection capabilities</li>
+							<li>Enhanced scanning capabilities for JavaScript-heavy sites</li>
+						</ul>
+					</div>
+
+					<div class="experience-item">
+						<h3>Undergraduate Teaching Assistant</h3>
+						<p class="period">October 2018 - December 2022</p>
+						<p class="company">Politehnica Bucharest</p>
+						<ul>
+							<li>Taught assembly language on Intel processors</li>
+							<li>Covered kernel relations, debugging, and software optimization</li>
+							<li>Focused on ARM and x86 architectures</li>
+						</ul>
+					</div>
+
+					<div class="experience-item">
+						<h3>Software Developer</h3>
+						<p class="period">Summer 2018</p>
+						<p class="company">Ixia (Keysight)</p>
+						<ul>
+							<li>Developed a Vulnerability Analysis Tool interfacing with Qualys scanner API</li>
+							<li>Built system to track and report company device security status</li>
+							<li>Utilized Django, Python, and Bash for implementation</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="projects">
+				<h2>Projects</h2>
+				<div class="project-grid">
+					<div class="project-card">
+						<div class="project-content">
+							<h3>Home Automation System</h3>
+							<p>Automated heating, lights, and sockets using Python, Arduino, and Bash Scripting. Integrated with Blynk framework for improved data handling.</p>
+							<a href="https://github.com/BrateS/ProgrameCasa" target="_blank" class="project-link">
+								<span>View on GitHub</span>
+								<i class="fas fa-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+					
+					<div class="project-card">
+						<div class="project-content">
+							<h3>Innovation Labs 2020</h3>
+							<p>Led the development of TunnelPeer from concept to implementation. Innovation Labs program focused on building a business idea from scratch, providing valuable experience in team organization and complex project management.</p>
+							<a href="https://www.innovationlabs.ro/teams/TunnelPeer" target="_blank" class="project-link">
+								<span>View Project</span>
+								<i class="fas fa-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-content">
+							<h3>Recursive Folder Search</h3>
+							<p>Implemented an efficient folder search system in C++, demonstrating advanced file system manipulation and optimization techniques.</p>
+							<a href="https://github.com/BrateS/Folder-Search" target="_blank" class="project-link">
+								<span>View on GitHub</span>
+								<i class="fas fa-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="education">
+				<h2>Education</h2>
+				<div class="terminal-window animate-on-scroll desktop-only">
+					<div class="terminal-header">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</div>
+					<div class="terminal-content">
+						<div class="line">
+							<span class="prompt">$</span>
+							<span class="command typing">cat education.json</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">{</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">  "masters": {</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "degree": "MSc",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "university": "POLITEHNICA University of Bucharest",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "period": "2020 - Present",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "thesis": "Trading Bots Decisions Based on News and Economic Indicators",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "focus": ["Data Mining", "Banking Software", "Scalable Systems"]</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">  },</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">  "bachelors": {</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "degree": "BSc in Automatic Control and Computers",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "university": "POLITEHNICA University of Bucharest",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "period": "2016 - 2020",</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">    "thesis": "Modern Web Application Spider and Vulnerability Scanner"</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">  }</span>
+						</div>
+						<div class="line">
+							<span class="output typing-delay">}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="mobile-education animate-on-scroll mobile-only">
+					<div class="education-item">
+						<h3>MSc</h3>
+						<p class="school">POLITEHNICA University of Bucharest</p>
+						<p class="period">2020 - Present</p>
+						<p class="thesis">Trading Bots Decisions Based on News and Economic Indicators</p>
+						<p class="focus">Data Mining, Banking Software, Scalable Systems</p>
+					</div>
+					<div class="education-item">
+						<h3>BSc in Automatic Control and Computers</h3>
+						<p class="school">POLITEHNICA University of Bucharest</p>
+						<p class="period">2016 - 2020</p>
+						<p class="thesis">Modern Web Application Spider and Vulnerability Scanner</p>
+					</div>
+				</div>
+
+				<div class="terminal-window animate-on-scroll desktop-only">
+					<div class="terminal-header">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</div>
+					<div class="terminal-content">
+						<div class="line">
+							<span class="prompt">$</span>
+							<span class="command typing">git --stat</span>
+						</div>
+						<div class="code-stats">
+							<div class="code-item animate-on-scroll">
+								<div class="code-info">
+									<span class="language">Python</span>
+									<span class="period">From 2014</span>
+								</div>
+								<div class="code-lines">24,512 lines</div>
+							</div>
+							<div class="code-item animate-on-scroll">
+								<div class="code-info">
+									<span class="language">C</span>
+									<span class="period">From 2015</span>
+								</div>
+								<div class="code-lines">10,431 lines</div>
+							</div>
+							<div class="code-item animate-on-scroll">
+								<div class="code-info">
+									<span class="language">C++</span>
+									<span class="period">From 2010</span>
+								</div>
+								<div class="code-lines">6,063 lines</div>
+							</div>
+							<div class="code-item animate-on-scroll">
+								<div class="code-info">
+									<span class="language">Java</span>
+									<span class="period">From 2010</span>
+								</div>
+								<div class="code-lines">2,456 lines</div>
+							</div>
+							<div class="code-item animate-on-scroll">
+								<div class="code-info">
+									<span class="language">Bash</span>
+									<span class="period">From 2016</span>
+								</div>
+								<div class="code-lines">1,416 lines</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mobile-skills animate-on-scroll mobile-only">
+					<div class="skill-item">
+						<div class="skill-header">
+							<span class="language">Python</span>
+							<span class="period">From 2014</span>
+						</div>
+						<div class="skill-bar">
+							<div class="progress" style="width: 90%"></div>
+						</div>
+					</div>
+					<div class="skill-item">
+						<div class="skill-header">
+							<span class="language">C</span>
+							<span class="period">From 2015</span>
+						</div>
+						<div class="skill-bar">
+							<div class="progress" style="width: 75%"></div>
+						</div>
+					</div>
+					<div class="skill-item">
+						<div class="skill-header">
+							<span class="language">C++</span>
+							<span class="period">From 2010</span>
+						</div>
+						<div class="skill-bar">
+							<div class="progress" style="width: 70%"></div>
+						</div>
+					</div>
+					<div class="skill-item">
+						<div class="skill-header">
+							<span class="language">Java</span>
+							<span class="period">From 2010</span>
+						</div>
+						<div class="skill-bar">
+							<div class="progress" style="width: 65%"></div>
+						</div>
+					</div>
+					<div class="skill-item">
+						<div class="skill-header">
+							<span class="language">Bash</span>
+							<span class="period">From 2016</span>
+						</div>
+						<div class="skill-bar">
+							<div class="progress" style="width: 60%"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="terminal-window animate-on-scroll desktop-only">
+					<div class="terminal-header">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</div>
+					<div class="terminal-content">
+						<div class="line">
+							<span class="prompt">$</span>
+							<span class="command typing">ls strengths/</span>
+						</div>
+						<div class="strengths-grid">
+							<div class="strength-tag animate-on-scroll">Optimizing problems/flows</div>
+							<div class="strength-tag animate-on-scroll">Management Experience</div>
+							<div class="strength-tag animate-on-scroll">Internet of Things</div>
+							<div class="strength-tag animate-on-scroll">Analytical Thinking</div>
+							<div class="strength-tag animate-on-scroll">CyberSecurity</div>
+							<div class="strength-tag animate-on-scroll">Dockers</div>
+							<div class="strength-tag animate-on-scroll">Tech Leadership</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mobile-strengths animate-on-scroll mobile-only">
+					<div class="strengths-list">
+						<div class="strength-item">Optimizing problems/flows</div>
+						<div class="strength-item">Management Experience</div>
+						<div class="strength-item">Internet of Things</div>
+						<div class="strength-item">Analytical Thinking</div>
+						<div class="strength-item">CyberSecurity</div>
+						<div class="strength-item">Dockers</div>
+						<div class="strength-item">Tech Leadership</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact">
+				<h2>Contact</h2>
+				<div class="contact-grid animate-on-scroll">
+					<div class="contact-item">
+						<a href="mailto:contact@stefanbratescu.com" class="contact-link">
+							<i class="fas fa-envelope"></i>
+							<span>Email</span>
+						</a>
+					</div>
+					<div class="contact-item">
+						<a href="https://linkedin.com/in/stefan-bratescu-95a379126/" target="_blank" class="contact-link">
+							<i class="fab fa-linkedin"></i>
+							<span>LinkedIn</span>
+						</a>
+					</div>
+					<div class="contact-item">
+						<a href="https://github.com/BrateS" target="_blank" class="contact-link">
+							<i class="fab fa-github"></i>
+							<span>GitHub</span>
+						</a>
+					</div>
+				</div>
+			</section>
 		</main>
-		<Footer />
+		<a href="#home" class="back-to-top" aria-label="Back to top">
+			<i class="fas fa-arrow-up"></i>
+		</a>
+		<script>
+			window.addEventListener('scroll', () => {
+				const backToTop = document.querySelector('.back-to-top');
+				if (window.scrollY > 300) {
+					backToTop.classList.add('show');
+				} else {
+					backToTop.classList.remove('show');
+				}
+			});
+		</script>
 	</body>
 </html>

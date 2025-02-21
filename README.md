@@ -1,60 +1,93 @@
-# Astro Starter Kit: Blog
+# Personal Portfolio Website
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-<!-- dash-content-start -->
+A clean, modern portfolio website built with Astro and deployed on Cloudflare Workers. See it in action at [stefanbratescu.com](https://stefanbratescu.com/).
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## Features
 
-Features:
+- ⚡️ Lightning-fast static site built with Astro
+- 🎨 Clean, modern design with smooth animations
+- 📱 Fully responsive layout
+- 💻 Terminal-style sections for a unique developer feel
+- 📅 Timeline-based experience display
+- 🚀 Project showcase section
+- 🎓 Education and skills overview with visual indicators
+- ⬆️ Smooth scroll with back-to-top functionality
+- ☁️ Easy deployment to Cloudflare Workers
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## Local Development
 
-<!-- dash-content-end -->
-
-## Getting Started
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
-
+1. Clone the repository:
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/personal-website
+git clone https://github.com/BrateS/personal-website.git
+cd personal-website
 ```
 
-A live public deployment of this template is available at [https://personal-website.templates.workers.dev](https://personal-website.templates.workers.dev)
+2. Install dependencies:
+```bash
+npm install
+```
 
-## 🚀 Project Structure
+3. Start the development server:
+```bash
+npm run dev
+```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+4. Build for production:
+```bash
+npm run build
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Deployment with Cloudflare Workers
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+This site is configured for deployment on Cloudflare Pages using Workers. Here's how to deploy your own:
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Install Wrangler CLI globally (if not already installed):
+```bash
+npm install -g wrangler
+```
 
-## 🧞 Commands
+2. Login to your Cloudflare account:
+```bash
+wrangler login
+```
 
-All commands are run from the root of the project, from a terminal:
+3. Deploy to Cloudflare:
+```bash
+npm run deploy
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run deploy`          | Deploy your production site to Cloudflare        |
+The deployment configuration is handled in `wrangler.json`. The site will be built using Astro and deployed to Cloudflare's edge network.
 
-## 👀 Want to learn more?
+## Customization
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+To make this portfolio your own:
 
-## Credit
+1. Update `src/consts.ts` with your personal information:
+   - Site title
+   - Site description
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+2. Modify `src/pages/index.astro` to:
+   - Update your profile information
+   - Customize sections (experience, projects, education)
+   - Adjust contact links
+
+3. Replace `public/images/profile.jpg` with your photo
+
+4. Customize styles in `src/styles/global.css`:
+   - Color scheme (via CSS variables)
+   - Typography
+   - Layout preferences
+
+## Technologies
+
+- [Astro](https://astro.build/) - Static site builder
+- CSS3 with custom properties
+- Google Fonts (Lato & JetBrains Mono)
+- Font Awesome icons
+- Cloudflare Workers for hosting
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
